@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+/* App.css */
+* {
+  box-sizing: border-box;
+}
+.app {
+  display: flex;
+  /* flex-direction: column; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar {
+  background-color: #2d2d2d;
+  width: 20%;
+  height: 100vh;
+  gap: 9px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #fff;
+}
+
+.sidebar div {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.canvas {
+  position: relative;
+  flex-grow: 1;
+  background-color: #ffffff;
+  overflow: auto;
+}
+
+.element {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Modal CSS */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.modal .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 24%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal .header {
+  width: 100%;
+  padding: 4px 12px;
+}
+
+.modal .closeBtn {
+  color: #cccccc;
+}
+
+.modal .closeBtn {
+  padding: 4px;
+  cursor: pointer;
+}
+
+/* Divider */
+.divider {
+  border: 1px solid #ededed;
+  width: 100%;
 }
