@@ -14,7 +14,7 @@ const Sidebar = () => {
       {DraggableElements.map((item, index) => {
         return (
           <div draggable onDragStart={(e) => onDragStart(e, item)}>
-            <img src={"./icons/grip-vertical.png"} alt="grip-icon" />{" "}
+            <img src={"../icons/grip-vertical.png"} alt="grip-icon" />{" "}
             {item.name}
           </div>
         );

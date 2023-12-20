@@ -61,35 +61,48 @@ const TitleHeader = ({ show, closeModal }) => {
   );
 };
 
-const LabelModal = ({ show }) => {
-  return (
-    <div className="container">
-      <label>
-        X:
-        <input
-          type="number"
-          value={show?.element?.x}
-          onChange={
-            (e) => {}
-            // setElementData({ ...elementData, x: e.target.value })
-          }
-        />
-      </label>
-      <label>
-        Y:
-        <input type="number" value={show?.element?.y} onChange={(e) => {}} />
-      </label>
-      {/* <button onClick={handleSave}>Save</button>
-    <button onClick={onDelete}>Delete</button> */}
-    </div>
-  );
-};
+const labelInputs = [
+  { label: "Text", key: "text", type: "text" },
+  { label: "X", key: "x", type: "number" },
+  { label: "Y", key: "y", type: "number" },
+  { label: "Font Size", key: "fontSize", type: "number" },
+  { label: "Font Weight", key: "fontWeight", type: "number" },
+];
 
-const LabelInput = ({ item }) => {
+const LabelModal = ({ show }) => {
+  const [state, setState] = useState({
+    text: "This is a label",
+    x: show?.element?.x,
+    y: show?.element?.y,
+    fontSize: "",
+    fontWeight: "",
+  });
+
+  const handleChange = ({ target: { value } }, key) => {
+    setState((prev) => ({ ...prev, [key]: +value }));
+  };
+
   return (
-    <div>
-      <label>{item?.label}</label>
-      <input value={item?.value} />
+    <div className="container-modal">
+      {labelInputs?.map(({ label, key, type }) => {
+        return (
+          <div key={key}>
+            <label>
+              {label}
+            </label>
+            <input
+              type={type}
+              value={state?.[key] ?? ""}
+              onChange={(e) => handleChange(e, key)}
+            />
+          </div>
+        );
+      })}
+      <button
+        onClick={() => show?.onUpdate(state, show?.index)}
+      >
+        Save Changes
+      </button>
     </div>
   );
 };

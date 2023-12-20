@@ -1,7 +1,6 @@
 // components/Canvas.js
 import React, { useState, useEffect } from "react";
 import Element from "./Element.jsx";
-import Modal from "./Modal";
 import "../Canvas.css"; // Import your CSS file
 import CustomModalService from "../services/customModalService.js";
 
@@ -25,7 +24,7 @@ const Canvas = () => {
   const handleDrag = (e, index) => {
     e.preventDefault();
     const { clientX, clientY } = e;
-    let element = elements?.[index];
+    let element = {...elements?.[index]};
     element.x = clientX;
     element.y = clientY;
     elements?.splice(index, 1, element);
@@ -35,7 +34,12 @@ const Canvas = () => {
     e.preventDefault();
   };
 
-  const onUpdate = (elementData, index) => {};
+  const onUpdate = (elementData, index) => {
+    let updatedElements = [...elements];
+    updatedElements[index] = { ...elements[index], ...elementData };
+    setElements(updatedElements);
+    CustomModalService.closeModal()
+  };
 
   const handleElementClick = (element, index) => {
     return CustomModalService.showModal({
