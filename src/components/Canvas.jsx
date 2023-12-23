@@ -8,16 +8,21 @@ const Canvas = () => {
   const [elements, setElements] = useState([]);
   const [selectedElement, setSelectedElement] = useState(null);
 
+  let isDragged = false
+
   const handleDrop = (e) => {
     e.preventDefault();
     let jsonString = e.dataTransfer.getData("application/json");
-    if (jsonString) {
+    if (jsonString && !isDragged) {
       const droppedItem = JSON.parse(
         e.dataTransfer.getData("application/json")
       );
       const { clientX, clientY } = e;
       const newElement = { ...droppedItem, x: clientX, y: clientY };
       setElements([...elements, newElement]);
+    }else{
+      setElements([...elements]);
+      isDragged = false
     }
   };
 
@@ -26,8 +31,9 @@ const Canvas = () => {
     const { clientX, clientY } = e;
     let element = {...elements?.[index]};
     element.x = clientX;
-    element.y = clientY;
-    elements?.splice(index, 1, element);
+    element.y = clientY; 
+    elements[index] = element 
+    isDragged = true
   };
 
   const handleDragOver = (e) => {

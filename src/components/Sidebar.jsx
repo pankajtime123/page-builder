@@ -2,9 +2,47 @@
 import React from "react";
 
 const DraggableElements = [
-  { name: "Label", type: "text", style: { border: "2px red solid" } },
-  { name: "Input", type: "input", style: {} },
-  { name: "Button", type: "button", style: {} },
+  {
+    name: "Label",
+    tag: "text",
+    attributes: {
+      style: {
+        color: "#000",
+        fontSize: "16px",
+        fontWeight: 400,
+      },
+      children: "This is label",
+    },
+  },
+  {
+    name: "Input",
+    tag: "input",
+    attributes: {
+      style: {
+        width: "298px",
+        height: "49px",
+        border:'none', 
+        outline:'none', 
+        padding: '14px',
+        fontSize:'20px'
+      },
+      placeholder: "Enter your text here",
+    },
+  },
+  {
+    name: "Button",
+    tag: "button",
+    attributes: {
+      style: {
+        width: "77px",
+        height: "49px",
+        backgroundColor: "#0044C1",
+        border: "none",
+        color: "#fff",
+      },
+      children: "Button",
+    },
+  },
 ];
 
 const Sidebar = () => {
