@@ -35,9 +35,9 @@
 
 .canvas {
   position: relative;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   background-color: #f3f3f3;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .element {

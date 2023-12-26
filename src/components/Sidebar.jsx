@@ -4,7 +4,7 @@ import React from "react";
 const DraggableElements = [
   {
     name: "Label",
-    tag: "text",
+    tag: "label",
     attributes: {
       style: {
         color: "#000",

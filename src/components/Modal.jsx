@@ -71,7 +71,7 @@ const labelInputs = [
 
 const LabelModal = ({ show }) => {
   const [state, setState] = useState({
-    text: "This is a label",
+    children: "This is a label",
     x: show?.element?.x,
     y: show?.element?.y,
     fontSize: "",
@@ -79,7 +79,7 @@ const LabelModal = ({ show }) => {
   });
 
   const handleChange = ({ target: { value } }, key) => {
-    setState((prev) => ({ ...prev, [key]: +value }));
+    setState((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -99,7 +99,7 @@ const LabelModal = ({ show }) => {
         );
       })}
       <button
-        onClick={() => show?.onUpdate(state, show?.index)}
+        onClick={() => show?.onUpdate(state, show?.index, 'label')}
       >
         Save Changes
       </button>
